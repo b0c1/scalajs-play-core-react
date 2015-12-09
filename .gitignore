@@ -46,3 +46,9 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+target/
+lib_managed/
+src_managed/
+project/boot/
+.history
+.cache
