@@ -18,7 +18,8 @@ object ScalaJSPlayCore extends Build {
     )
     .settings(
       publish := {},
-      publishLocal := {}
+      publishLocal := {},
+      onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value
     )
 
   lazy val shared = (crossProject.crossType(CrossType.Pure) in file("shared"))
@@ -34,7 +35,9 @@ object ScalaJSPlayCore extends Build {
   lazy val sharedJS = shared.js
 
   lazy val client = project.in(file("client"))
-    .settings(Settings.clientSettings)
+    .settings(Settings.clientSettings ++ Seq(
+      name := "client"
+    ))
     .enablePlugins(ScalaJSPlugin, ScalaJSPlay)
     .dependsOn(sharedJS)
 
@@ -42,13 +45,14 @@ object ScalaJSPlayCore extends Build {
 
   lazy val server = project.in(file("server"))
     .settings(Settings.serverSettings ++ Seq(
+      name := "server",
       scalaJSProjects := clients
     ))
-    .enablePlugins(SbtTwirl,PlayScala)
+    .enablePlugins(SbtTwirl, PlayScala)
     .disablePlugins(PlayLayoutPlugin)
     .aggregate(client)
     .dependsOn(sharedJVM)
 
   // loads the Play server project at sbt startup
-  onLoad in Global := (Command.process("project server", _: State)) compose (onLoad in Global).value
+
 }
