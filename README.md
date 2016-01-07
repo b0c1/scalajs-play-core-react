@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/b0c1/scalajs-play-core-react.svg)](https://travis-ci.org/b0c1/scalajs-play-core-react)
+
 # ScalaJS and Play base project with React and MDL
 
 This branch is using [ScalaJS - React](https://github.com/japgolly/scalajs-react) with [MDL](http://www.getmdl.io/) in the client side
