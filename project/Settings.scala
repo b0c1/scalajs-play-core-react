@@ -104,7 +104,7 @@ object versions {
     val scala = "2.11.7"
     val scalaRx = "0.2.8"
     val autowire = "0.2.5"
-    val booPickle = "1.1.0"
+    val booPickle = "1.1.1"
     val uTest = "0.3.1"
   }
 
@@ -121,7 +121,7 @@ object versions {
 
   object server {
     val silhouette = "3.0.4"
-    val macwire = "2.1.0"
+    val macwire = "2.2.2"
     val playScripts = "0.3.0"
   }
 
